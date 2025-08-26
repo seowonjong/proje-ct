@@ -62,9 +62,8 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="nav.jsp"></jsp:include>
 
-
 	<section>
-		<h2>응용소프트웨어 개발1</h2>
+		<h2>응용소프트웨어 개발</h2>
 		<p>index 페이지</p>
 	</section>
 
