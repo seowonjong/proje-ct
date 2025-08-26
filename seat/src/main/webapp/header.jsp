@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>header</title>
+<style>
+	/* header 스타일 */
+	header {
+		width: 100%;
+		background: #2c3e50; /* 모던한 다크 블루 */
+		color: #fff;
+		padding: 15px 20px;
+		text-align: center;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	}
+
+	header h3 {
+		font-size: 1.5rem;
+		font-weight: bold;
+		letter-spacing: 1px;
+	}
+</style>
+</head>
+<body>
+<header>
+	<h3>좌석 예약 관리 프로그램</h3>
+</header>
+</body>
+</html>

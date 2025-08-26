@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좌석예약조회</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	
+	section{
+		width: 100%;
+		height: calc(100vh - 130px);
+		background-color: lightgray;
+	
+	}
+
+	section h2{
+		padding: 20px;
+		text-align: center;
+	}
+	form{
+		display : flex;
+		justify-content: center;
+	}
+	table td{
+		text-align: center;
+	}	
+
+</style>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="nav.jsp"></jsp:include>
+	<section>
+		<h2> 좌석예약조회 </h2>
+		<form action="list_action.jsp" name="list_frm" method="post">
+			<table border="1">
+				<tr>
+					<td>사원번호를 입력하시오.</td>
+					<td><input type="text" name="emptno"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" value="좌석예약조회" onclick="listCheck()">
+						<input type="button" value="홈으로" onclick="window.location.href='index.jsp'">
+					</td>
+				</tr>
+				
+			
+			</table>
+		
+		</form>
+		
+	</section>
+	<jsp:include page="footer.jsp"></jsp:include>
+	<script src="check.js"></script>
+	
+</body>
+</html>

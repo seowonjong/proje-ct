@@ -1,0 +1,66 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>insert</title>
+<style>
+*{
+		margin: 0;
+		padding: 0;
+	}
+	
+	section{
+		width: 100%;
+		height: calc(100vh - 130px);
+		background-color: lightgray;
+	
+	}
+
+	section h2{
+		padding: 20px;
+		text-align: center;
+	}
+	form{
+		display: flex;
+		justify-content: center;
+	}
+</style>
+</head>
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="nav.jsp"></jsp:include>
+	<section>
+		<h2>근무좌석예약</h2>
+		<form name="frm" action="action.jsp">
+			<table border="1">
+				<tr>
+					<td>예약번호</td>
+					<td><input type="text" name="resvno" style="height:100%"></td>
+				</tr>
+				<tr>
+					<td>사원번호</td>
+					<td><input type="text" name="emptno"></td>
+				</tr>
+				<tr>
+					<td>근무일자</td>
+					<td><input type="text" name="resvdate"></td>
+				</tr>
+				<tr>
+					<td>좌석번호</td>
+					<td><input type="text" name="seatno"></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center">
+						<input type="button" value="등록" onclick="insertCheck()">
+						<input type="button" value="다시쓰기" onclick="insertReset()">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</section>
+	<jsp:include page="footer.jsp"></jsp:include>
+	<script type="text/javascript" src="check.js"></script>
+</body>
+</html>

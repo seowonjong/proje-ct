@@ -1,0 +1,40 @@
+package controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Servlet
+ */
+@WebServlet({ "/Servlet", "/action" })
+public class Servlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		String resv_no = request.getParameter("resv_no");
+		String cust_no = request.getParameter("cust_no");
+		String resv_date = request.getParameter("resv_date");
+		String court_no = request.getParameter("court_no");
+		
+		request.setAttribute("resv_no", resv_no);
+		request.setAttribute("cust_no", cust_no);
+		request.setAttribute("resv_date", resv_date);
+		request.setAttribute("court_no", court_no);
+		request.getRequestDispatcher("result.jsp").forward(request, response);
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+}

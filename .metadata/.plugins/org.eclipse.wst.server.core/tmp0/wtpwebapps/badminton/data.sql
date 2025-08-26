@@ -1,0 +1,10 @@
+CREATE TABLE info (
+  resv_no VARCHAR2(50),
+  cust_no VARCHAR2(50),
+  resv_date VARCHAR2(50),
+  court_no VARCHAR2(50)
+);
+
+
+
+select * from info

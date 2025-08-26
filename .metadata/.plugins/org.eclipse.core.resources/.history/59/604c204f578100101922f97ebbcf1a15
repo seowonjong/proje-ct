@@ -1,0 +1,109 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="db.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좌석예약조회(성공)</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+section {
+	width: 100%;
+	height: calc(100vh - 130px);
+	background-color: lightgray;
+}
+
+section h2 {
+	padding: 20px;
+	text-align: center;
+}
+
+div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+table {
+	margin-bottom: 20px;
+}
+
+table td {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="nav.jsp"></jsp:include>
+	<section>
+		<%
+		request.setCharacterEncoding("utf-8");
+
+		String emptno = request.getParameter("emptno");
+		%>
+		<h2>
+			사원번호 :
+			<%=emptno%>님의 좌석예약조회
+		</h2>
+		<div>
+			<table border="1">
+				<tr>
+					<td>사원번호</td>
+					<td>이름</td>
+					<td>근무일자</td>
+					<td>좌석번호</td>
+					<td>좌석위치</td>
+					<td>내선번호</td>
+				</tr>
+				<%
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String resvdate = "";
+				String newDate = "";
+
+				try {
+					String sql = "select em.empno, em.empname, re.resvdate, se.seatno, se.office, se.callno " + "from tbl_emp_2504 em "
+					+ "join tbl_resv_2504 re " + "on em.empno = re.empno " + "join tbl_seat_2504 se "
+					+ "on se.seatno = re.seatno and em.empno = ? " + "order by re.resvdate desc";
+
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, emptno);
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						resvdate = rs.getString(3);
+						newDate = resvdate.substring(0, 4) + "년" + resvdate.substring(4, 6) + "월" + resvdate.substring(6, 8) + "일";
+				%>
+				<tr>
+					<td><%=rs.getString(1)%></td>
+					<td><%=rs.getString(2)%></td>
+					<td><%=newDate%></td>
+					<td><%=rs.getString(4)%></td>
+					<td><%=rs.getString(5)%></td>
+					<td><%=rs.getString(6)%></td>
+
+				</tr>
+				<%
+				}
+				} catch (Exception e) {
+				e.printStackTrace();
+				}
+				%>
+			</table>
+			<input type="button" value="돌아가기"
+				onclick="window.location.href='slist.jsp'">
+		</div>
+
+	</section>
+	<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>
